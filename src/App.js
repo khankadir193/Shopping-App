@@ -1,11 +1,9 @@
 import './App.css';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
-import { BrowserRouter, Link, Routes,Route } from 'react-router-dom';
-import HeaderMenu from './ShoppingCart/HeaderMenu';
-import CardComponent from './ShoppingCart/CardComponent';
+import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import About from './ShoppingCart/About';
 import Contact from './ShoppingCart/Contact';
-import NewsDetails from './ShoppingCart/NewsDetails';
+import ProductDetails from './ShoppingCart/ProductDetails';
 import CartDetails from './ShoppingCart/CartDetails';
 function App() {
   return (
@@ -15,7 +13,7 @@ function App() {
           <Route path='/' element={<ShoppingCart />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/newsDetails' element={<NewsDetails />} />
+          <Route path='/newsDetails' element={<ProductDetails />} />
           <Route path='/cartDetails' element={<CartDetails />} />
         </Routes>
       </BrowserRouter>
@@ -23,7 +21,4 @@ function App() {
   );
 }
 
-export default App; 
-
-// most important hooks...
-// useNavigage,useParams,useLocation etc....
+export default App;

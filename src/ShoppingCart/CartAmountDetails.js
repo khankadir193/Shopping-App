@@ -10,9 +10,6 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     flexShrink: "1",
-    //height: "30vh",
-    // height: "30%",
-    // width: "40%",
     width:"100vh",
     margin: "5rem 0rem 0rem 62rem",
     flexWrap: "wrap",
@@ -26,51 +23,28 @@ const useStyles = makeStyles({
     width:"70%",
     fontSize:"2rem",
     fontStyle:"italic"
-  },
-
-  // totalAmount: {
-  //   display: "flex",
-  //   //justifyContent: "center",
-  //   marginLeft: "1rem",
-  //   // backgroundColor: "lightslategray",
-  //   fontSize: "34px"
-  // },
-  // alignAmount: {
-  //   display: "flex",
-  //   marginLeft: "18rem"
-  // },
-
-  //this is i will be use end of the design
-  // divAlign:{
-  //     display:"flex",
-  //     justifyContent:"end",
-  //     flex:1
-  // }
+  }
 });
 
 const CartAmountDetails = (props) => {
   const classes = useStyles();
-  // React.useEffect(()=>{
-  //   console.log('cartAmountDetails...components',props.addPrice)
-  // })
-  //const [addPrice, setAddPrice] = React.useState();
-
+  let gstTax = 50,tax = 15,totalAmount = (props.addPrice+gstTax+tax).toFixed(2);
 
   return (
     <Card className={classes.root}>
       <CardContent className={classes.content}>
         <div style={{display:"flex",justifyContent:"space-between"}}>
-          <Typography className={classes.totalAmount}>Total:</Typography><span className={classes.alignAmount}> {props.addPrice ? props.addPrice.toFixed() : 0} </span>
+          <Typography className={classes.totalAmount}>Total:</Typography><span className={classes.alignAmount}> {props.addPrice ? props.addPrice.toFixed() : 0} Rs.</span>
         </div>
         <div style={{display:"flex",justifyContent:"space-between"}}>
-          <Typography className={classes.totalAmount}>GST:</Typography><span className={classes.alignAmount}>50 Rs.</span>
+          <Typography className={classes.totalAmount}>GST:</Typography><span className={classes.alignAmount}>{gstTax} Rs.</span>
         </div>
         <div style={{display:"flex",justifyContent:"space-between"}}>
-          <Typography className={classes.totalAmount}>Tax:</Typography><span className={classes.alignAmount}>15 Rs.</span>
+          <Typography className={classes.totalAmount}>Tax:</Typography><span className={classes.alignAmount}>{tax} Rs.</span>
         </div>
         <Divider light />
         <div style={{display:"flex",justifyContent:"space-between"}}>
-          <Typography className={classes.totalAmount}>GrandTotal:</Typography><span className={classes.alignAmount}>0 Rs.</span>
+          <Typography className={classes.totalAmount}>GrandTotal:</Typography><span className={classes.alignAmount}>{props.addPrice ? totalAmount : 0}Rs.</span>
         </div>
       </CardContent>
     </Card>

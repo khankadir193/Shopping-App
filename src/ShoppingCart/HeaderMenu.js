@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: '10px',
         color: '#FFFFFF',
         position:'fixed',
-        //latest changes
         display:"flex",
         flexDirection:"row-reverse"
     },
@@ -26,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: 'none',
         paddingTop: '10px',
         color: '#FFFFFF',
-        //position:'fixed'
-        //latest chagnes
         display:"flex",
         flexDirection:"row-reverse"
     },
@@ -39,9 +36,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textDecoration:"none",
-    //new changes
-    marginRight:"2rem"
+    marginRight:"4rem",
   },
+  menuStyle :{
+    textDecoration:"none",
+    marginRight: theme.spacing(2),
+  }
 }));
 
 const HeaderMenu = (props)=> {
@@ -51,13 +51,13 @@ const HeaderMenu = (props)=> {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
-               <NavLink style={{textDecoration:"none"}} to="/"> Home </NavLink>
+               <NavLink className={classes.menuStyle} to="/"> Home </NavLink>
               </Typography>
               <Typography variant="h6" className={classes.title}>
-              <NavLink style={{textDecoration:"none"}} to="/about"> About </NavLink>
+              <NavLink className={classes.menuStyle} to="/about"> About </NavLink>
               </Typography>
               <Typography variant="h6" className={classes.title}>
-              <NavLink style={{textDecoration:"none"}} to="/contact"> Contact </NavLink>
+              <NavLink className={classes.menuStyle} to="/contact"> Contact </NavLink>
               </Typography>
               <NavLink to="/cartDetails"><ShoppingCartIcon /></NavLink>
             </Toolbar>
@@ -67,6 +67,3 @@ const HeaderMenu = (props)=> {
 }
 
 export default HeaderMenu;
-
-// for while click on add to cart in that hearder component will be called and i am passing this conditions..
-// || props.cart === 'cartDetails'

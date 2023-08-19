@@ -10,7 +10,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import HeaderMenu from './HeaderMenu';
 import { useDispatch,useSelector } from 'react-redux';
-import { actionCreators } from '../state.js';
+import { actionCreators } from '../state.js/index.js';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     '& .MuiCardContent-root':{
       position:"relative",
       left:"43rem",
-      bottom:"32rem"
+      bottom:"30rem"
      },
     '& .MuiCardMedia-media' :{
       width:"45%",
@@ -46,8 +46,7 @@ const useStyles = makeStyles({
       width:"34%",
       color:"white"
     },
-     boxShadow:"none",
-    // margin: "100px",
+    boxShadow:"none",
     display: "inline-block",
     width: '71%',
     height: "68vh",
@@ -55,18 +54,12 @@ const useStyles = makeStyles({
   },
 });
 
-const NewsDetails = (props)=> {
+const ProductDetails = (props)=> {
   const classes = useStyles();
   const location = useLocation();
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
-
-  React.useEffect(()=>{
-    console.log('location.state',location.state);
-    console.log('location.state.value.image..',location.state.value.image);
-    console.log('this is the newsDetails props...',props);
-  });
 
   const dispatch = useDispatch();
   const data = useSelector(state => state.value);
@@ -91,8 +84,6 @@ const NewsDetails = (props)=> {
       dispatch(actionCreators.storeData(newItemData))
       setOpen(!isExist);
     }
-
-    // isExist ? dispatch(actionCreators.storeData(newItemData)) : '';
   }
 
   const handleClose = (event, reason) => {
@@ -156,4 +147,4 @@ const NewsDetails = (props)=> {
   )
 }
 
-export default NewsDetails;
+export default ProductDetails;
