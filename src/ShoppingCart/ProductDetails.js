@@ -21,37 +21,71 @@ import MuiAlert from '@material-ui/lab/Alert';
 const useStyles = makeStyles({
   root: {
     '& .MuiCardContent-root':{
+      //old implementation
+      // position:"relative",
+      // left:"43rem",
+      // bottom:"30rem"
+      //new implementation..
       position:"relative",
-      left:"43rem",
-      bottom:"30rem"
+      // left:"24rem",
+      bottom:"3rem",
+      width:"70%"
      },
     '& .MuiCardMedia-media' :{
       width:"45%",
       height:"56vh",
       position:"relative",
-      left:"3rem"
     },
     '& .MuiCardMedia-img':{
-      objectFit:"contain"
+      objectFit:"contain",
+      transform:'scale(.7)'
     },
-    '& .MuiCardActionArea-root':{
-      width:"40%",
-      display:"block",
-      textAlign:"start",
-      height:"61vh"
-    },
+    // '& .MuiCardActionArea-root':{
+    //   width:"40%",
+    //   display:"block",
+    //   textAlign:"start",
+    //   height:"61vh"
+    // },
     '& .MuiButton-textSizeLarge':{
-      marginLeft:"33rem",
       background:"black",
-      width:"34%",
-      color:"white"
+      width:"100%",
+      color:"white",
+      position:'relative',
     },
     boxShadow:"none",
-    display: "inline-block",
-    width: '71%',
-    height: "68vh",
-    margin:"7rem 16rem 0"
+    // display: "inline-block",
+    // width: '71%',
+    // height: "68vh",
+    // margin:"7rem 16rem 0"
+
+    //new implementation
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexDirection: 'column',
+
+      //
+      // display: 'flex',
+      // flexDirection: 'column',
+      // justifyContent: 'space-between', // Distributes space between card action areas
+      // height: '100%', 
   },
+  leftSideItems:{
+    display: 'flex',
+    justifyContent:"space-between",
+    //flex: '10rem 20rem 10rem', // Allow the content to grow and shrink as needed
+    // display: 'flex',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between', 
+  },
+  rightSideItems:{
+    display: 'flex',
+    justifyContent:"space-between",
+    alignItems:"center",
+
+    // display: 'flex',
+    // justifyContent: 'space-between',
+  }
 });
 
 const ProductDetails = (props)=> {
@@ -105,7 +139,7 @@ const ProductDetails = (props)=> {
   <>
   <HeaderMenu />
   <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea className={classes.leftSideItems} >
         <CardMedia
           component="img"
           // alt="Contemplative Reptile"
@@ -123,15 +157,20 @@ const ProductDetails = (props)=> {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={()=>{navigate('/')}}>
-          Go Back
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <div className={classes.rightSideItems}>
+        <div>
+          <Button size="small" color="primary" onClick={()=>{navigate('/')}}>
+            Go Back
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button>
+        </div>
+        <div>
         <Button size="large" color="primary" onClick={handleData}>
           Add To Cart
-        </Button>
+        </Button></div>
+        </div>
       </CardActions>
     </Card>
     {open ? <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
