@@ -51,6 +51,15 @@ const useStyles = makeStyles({
     display:"flex",
     order: 2,
     position:"fixed"
+  },
+  "@media (max-width: 768px)" : {
+    totalContainer :{
+      width: "calc(50% - 10px)" /* Adjust the width for smaller screens */
+    },
+    root: {
+      width: "150%",
+      height: "42vh",
+    },
   }
 });
 
